@@ -133,7 +133,7 @@ void decode(Node* root, int &index, string str, ofstream &u, string text, int fl
 		decode(root->right, index, str, u, text, flag);
 }
 
-void ThreadEncode(unordered_map<char, int> freq, string text, int key, priority_queue<pair<int, Node*>, vector<pair<int, Node*>>, compRoot> &root, unordered_map<int, unordered_map<char, string>> &huffmanCode)
+void ThreadEncode(unordered_map<char, int> freq, string text, int key, priority_queue<pair<int, Node*>, vector<pair<int, Node*> >, compRoot> &root, unordered_map<int, unordered_map<char, string> > &huffmanCode)
 {
 	priority_queue<Node*, vector<Node*>, comp> pq;
 
@@ -174,7 +174,7 @@ void ThreadEncode(unordered_map<char, int> freq, string text, int key, priority_
 }
 
 
-pair<int, unordered_map<char, int>> p(int key, unordered_map<char, int> map)
+pair<int, unordered_map<char, int> > p(int key, unordered_map<char, int> map)
 {
 	//pair<int, unordered_map<char, int>> pai;
 	return  make_pair(key, map);
@@ -189,7 +189,7 @@ void buildHuffmanTree(string text, int numThreads)
 	f.open("binary.zipper", std::ios::binary | ios::out);
 	// count frequency of appearance of each character
 	// and store it in a map
-	unordered_map<int, unordered_map<char, int>> freq;
+	unordered_map<int, unordered_map<char, int> > freq;
 	int numThread = 0;
 	int c = 0;
 	unordered_map<char, int> tmpMap;
@@ -205,8 +205,8 @@ void buildHuffmanTree(string text, int numThreads)
 	}
 	freq[c] = tmpMap;
 	keys.push_back(c);
-	priority_queue<pair<int, Node*>, vector<pair<int, Node*>>, compRoot> root;
-	unordered_map<int, unordered_map<char, string>> huffmanCode;
+	priority_queue<pair<int, Node*>, vector<pair<int, Node*> >, compRoot> root;
+	unordered_map<int, unordered_map<char, string> > huffmanCode;
 
 	int tmp1 = 0;
 	
@@ -380,7 +380,7 @@ void buildHuffmanTree(string text, int numThreads)
 	
 	cout << str << endl;
 	int iterator = 0;
-	ofstream u("./unpack/unpack.png", ios::trunc);
+	ofstream u("./unpack/unpack.svg", ios::trunc);
 	int r2 = 0;
 	int key1 = 0;
 	while (index < (int)str.size()) {
@@ -419,7 +419,7 @@ int main()
 {
 	string text = "So this is testing the Huffman algotithm - 1234567890!@#$%^&*()_+QWERTYUIOP{}йцукенгшщзхъфывапролджэячсмитьбюQERTYUIOPASDFGHJKLZXCVBNM<>QWERTYUIOP{ASDFGHJLЙЦУКЕНГШЩЗХФЫВАПРОЛДЖЭ//ЯЧСМИТЬБЮ";
 
-	ifstream file("i.png");
+	ifstream file("i.jpeg");
 
 	string str = "";
 	char s;
